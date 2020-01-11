@@ -1,0 +1,24 @@
+name: Deploy Firebase Workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: nuxt/actions-yarn@master
+      with:
+        args: install
+    - uses: nuxt/actions-yarn@master
+      with:
+        args: generate
+    - name: deploy
+      run: yarn firebase deploy --token $FIREBASE_TOKEN
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
