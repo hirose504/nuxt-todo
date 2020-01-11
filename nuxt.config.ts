@@ -1,6 +1,8 @@
+import { Configuration } from '@nuxt/types'
+
 const colors = require('vuetify/es5/util/colors').default
 
-module.exports = {
+const config: Configuration = {
   mode: 'universal',
   /*
    ** Headers of the page
@@ -89,3 +91,5 @@ module.exports = {
     extend(config, ctx) {}
   }
 }
+
+export default config
